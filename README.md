@@ -1,1 +1,1 @@
-# zmk-config-keyboard
+# zml-config-peach-rev1-keyboard
