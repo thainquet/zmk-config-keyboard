@@ -1,5 +1,5 @@
-identifier: peach_v1
-name: Peach Rev1 BOARD
+identifier: soybeans_v1
+name: Soybeans Rev1 Board
 type: mcu
 arch: arm
 toolchain:

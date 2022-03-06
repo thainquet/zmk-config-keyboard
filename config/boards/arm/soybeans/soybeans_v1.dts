@@ -5,7 +5,7 @@
 */
 
 /dts-v1/;
-#include "peach.dtsi"
+#include "soybeans.dtsi"
 
 
 / {

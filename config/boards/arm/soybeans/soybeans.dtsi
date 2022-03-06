@@ -8,8 +8,8 @@
 #include <dt-bindings/zmk/matrix_transform.h>
 
 / {
-	model = "PEACH";
-	compatible = "peach,v1";
+	model = "SOYBEANS";
+	compatible = "soybeans,v1";
 
 	chosen {
 		zephyr,code-partition = &code_partition;

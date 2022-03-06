@@ -1,10 +1,10 @@
 # Copyright (c) 2021 The ZMK Contributors
 # SPDX-License-Identifier: MIT
 
-if BOARD_PEACH_V1
+if BOARD_SOYBEANS_V1
 
 config BOARD
-	default "Peach"
+	default "Soybeans"
 
 if USB
 
@@ -29,6 +29,6 @@ config ZMK_BATTERY_VOLTAGE_DIVIDER
 	default y
 
 config ZMK_KEYBOARD_NAME
-	default "Peach Rev1"
+	default "Soybeans Rev1"
 
-endif # BOARD_PEACH_V1
+endif # BOARD_SOYBEANS_V1

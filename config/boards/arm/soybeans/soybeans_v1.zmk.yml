@@ -1,6 +1,6 @@
 file_format: "1"
-id: peach_v1
-name: Peach Rev1 BOARD
+id: soybeans_v1
+name: Soybeans Rev1 Board
 type: board
 arch: arm
 features:
