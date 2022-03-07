@@ -12,3 +12,6 @@
 #     shield: reviung41
 #
 ---
+
+include:
+  - board: peach_v1
