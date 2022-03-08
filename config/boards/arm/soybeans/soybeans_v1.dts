@@ -79,7 +79,7 @@
 	ext-power {
 		compatible = "zmk,ext-power-generic";
 		label = "EXT_POWER";
-		control-gpios = <&gpio0 7 GPIO_ACTIVE_LOW>;
+		control-gpios = <&gpio0 7 GPIO_ACTIVE_LOW>;   /*0.07*/
 	};
 
     left_encoder: encoder_left {
@@ -100,6 +100,26 @@
 	};
 };
 
+ &i2c0 {
+ 	sda-pin = <13>;
+	scl-pin = <14>;
+
+ 	oled: ssd1306@3c {
+ 		compatible = "solomon,ssd1306fb";
+ 		reg = <0x3c>;
+ 		label = "DISPLAY";
+ 		width = <128>;
+ 		height = <32>;
+ 		segment-offset = <0>;
+ 		page-offset = <0>;
+ 		display-offset = <0>;
+ 		multiplex-ratio = <31>;
+ 		segment-remap;
+ 		com-invdir;
+ 		com-sequential;
+ 		prechargep = <0x22>;
+ 	};
+ };
 &spi1 {
   mosi-pin = <4>;
   // Unused pins, needed for SPI definition, but not used by the ws2812 driver itself.

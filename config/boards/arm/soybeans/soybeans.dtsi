@@ -41,6 +41,11 @@
   status = "okay";
 };
 
+&i2c0 {
+ 	status = "okay";
+ 	compatible = "nordic,nrf-twi";
+};
+
 &usbd {
 	status = "okay";
 };
