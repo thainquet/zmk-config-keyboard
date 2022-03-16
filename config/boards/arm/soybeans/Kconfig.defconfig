@@ -16,10 +16,27 @@ config USB_DEVICE_STACK
 
 endif # USB
 
-if ZMK_DISPLAY_OLED
+if ZMK_DISPLAY
 
-config I2C
-	default y
+choice
+   prompt "Trigger mode"
+   default ZMK_DISPLAY_OLED
+   help
+	  Specify the type of triggering to be used by the driver.
+	  
+   config ZMK_DISPLAY_OLED
+        depends on ZMK_DISPLAY
+	select ZMK_DISPLAY_OLED_CONFIG
+
+   config EC11_TRIGGER_OWN_THREAD
+        depends on ZMK_DISPLAY
+	select ZMK_DISPLAY_E_INK_CONFIG
+endchoice
+
+config EC11_THREAD_PRIORITY
+
+    config I2C
+	   default y
 
 config SSD1306
 	default y
