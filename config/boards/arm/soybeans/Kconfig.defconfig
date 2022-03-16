@@ -18,32 +18,19 @@ endif # USB
 
 if ZMK_DISPLAY
 
-choice
-   prompt "Trigger mode"
-   default ZMK_DISPLAY_OLED
-   help
-	  Specify the type of triggering to be used by the driver.
-	  
-   config ZMK_DISPLAY_OLED
-        depends on ZMK_DISPLAY
-	select ZMK_DISPLAY_OLED_CONFIG
-
-   config EC11_TRIGGER_OWN_THREAD
-        depends on ZMK_DISPLAY
-	select ZMK_DISPLAY_E_INK_CONFIG
-endchoice
-
-config EC11_THREAD_PRIORITY
-
-    config I2C
-	   default y
+config I2C
+	default y
 
 config SSD1306
 	default y
 
 config SSD1306_REVERSE_MODE
 	default y
-#LVGL
+
+endif # ZMK_DISPLAY
+
+if LVGL
+
 config LVGL_HOR_RES_MAX
 	default 128
 
@@ -63,7 +50,7 @@ choice LVGL_COLOR_DEPTH
 	default LVGL_COLOR_DEPTH_1
 endchoice
 
-endif # ZMK_DISPLAY_OLED
+endif # LVGL
 
 config BT_CTLR
 	default BT
