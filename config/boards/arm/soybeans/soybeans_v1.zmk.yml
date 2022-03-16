@@ -5,7 +5,8 @@ type: board
 arch: arm
 features:
   - keys
-  - RGB
+  - display
+  - underglow
 outputs:
   - usb
   - ble
