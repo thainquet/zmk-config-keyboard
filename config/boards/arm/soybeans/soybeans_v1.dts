@@ -6,6 +6,7 @@
 
 /dts-v1/;
 #include "soybeans.dtsi"
+#include <dt-bindings/led/led.h>
 
 
 / {
@@ -95,48 +96,50 @@
 		compatible = "zmk,battery-voltage-divider";
 		label = "BATTERY";
 		io-channels = <&adc 3>;
-		output-ohms = <10000000>;
-		full-ohms = <(10000000 + 4000000)>;
+		output-ohms = <2000000>;
+		full-ohms = <(2000000 + 820000)>;
 	};
 };
 
- &i2c0 {
+&i2c0 {
  	sda-pin = <13>;
 	scl-pin = <14>;
 
- 	oled: ssd1306@3c {
- 		compatible = "solomon,ssd1306fb";
- 		reg = <0x3c>;
- 		label = "DISPLAY";
- 		width = <128>;
- 		height = <32>;
- 		segment-offset = <0>;
- 		page-offset = <0>;
- 		display-offset = <0>;
- 		multiplex-ratio = <31>;
- 		segment-remap;
- 		com-invdir;
- 		com-sequential;
- 		prechargep = <0x22>;
- 	};
+	oled: ssd1306@3c {
+		compatible = "solomon,ssd1306fb";
+		reg = <0x3c>;
+		label = "SSD1306";
+		width = <128>;
+		height = <32>;
+		segment-offset = <0>;
+		page-offset = <0>;
+		display-offset = <0>;
+		multiplex-ratio = <31>;
+		com-invdir;
+		segment-remap;
+		com-sequential;
+		prechargep = <0x22>;
+	};
  };
+
 &spi1 {
-  mosi-pin = <4>;
-  // Unused pins, needed for SPI definition, but not used by the ws2812 driver itself.
-  sck-pin = <6>;
-  miso-pin = <8>;
+	mosi-pin = <4>;
+	// Unused pins, needed for SPI definition, but not used by the ws2812 driver itself.
+	sck-pin = <6>;
+	miso-pin = <8>;
 
-  led_strip: ws2812@0 {
-    compatible = "worldsemi,ws2812-spi";
-    label = "WS2812";
+	led_strip: ws2812@0 {
+		compatible = "worldsemi,ws2812-spi";
+		label = "WS2812";
 
-    /* SPI */
-    reg = <0>; /* ignored, but necessary for SPI bindings */
-    spi-max-frequency = <4000000>;
+		/* SPI */
+		reg = <0>; /* ignored, but necessary for SPI bindings */
+		spi-max-frequency = <4000000>;
 
-    /* WS2812 */
-    chain-length = <18>; /* number of LEDs */
-    spi-one-frame = <0x70>;
-    spi-zero-frame = <0x40>;
-  };
+		/* WS2812 */
+		chain-length = <18>; /* LED strip length */
+		spi-one-frame = <0x70>;
+		spi-zero-frame = <0x40>;
+		color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
+	};
 };

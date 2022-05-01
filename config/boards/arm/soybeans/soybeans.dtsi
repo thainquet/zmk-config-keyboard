@@ -37,8 +37,8 @@
 };
 
 &spi1 {
-  compatible = "nordic,nrf-spim";
-  status = "okay";
+	compatible = "nordic,nrf-spim";
+	status = "okay";
 };
 
 &i2c0 {
